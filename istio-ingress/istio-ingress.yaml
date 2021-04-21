@@ -1,0 +1,23 @@
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: istio-gateway
+  namespace: istio-system
+spec:
+  servers:
+    - hosts:
+        - teste.com.br
+        - kiali.teste.com.br
+        - jaeger.teste.com.br
+        - grafana.teste.com.br
+        - prometheus.teste.com.br
+        - httpd.teste.com.br
+        - nginx.teste.com.br
+        - backend.teste.com.br
+        - frontend.teste.com.br
+      port:
+        name: http
+        number: 443
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
