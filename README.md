@@ -1,13 +1,19 @@
-### To access the Kubernetes dashboard use:
+### To install istio
 
-#### https://DNS-OR-NGINX-INGRESS-IP:NGINX-HTTPS-PORT/
+#### istioctl operator init --hub=docker.io/querycapistio --tag=1.9.2
 
-#### Example:
+### Apply files in istio-operator folder
+#### kubectl apply -f istio-operator/
+#### kubectl apply -f gateway/
 
-#### https://teste.com.br:31410/
+### Install kiali
+#### kubectl apply -f kiali/
 
-### To get the dashboard token:
+### Install grafana
+#### kubectl apply -f grafana/
 
-#### kubectl -n kubernetes-dashboard get secret KUBERNETES-DASHBOARD-TOKEN-NAME -o jsonpath={.data.token} | base64 --decode
+### Install jaeger
+#### kubectl apply -f jaeger/
 
-#### kubectl -n kubernetes-dashboard get secret kubernetes-dashboard-token-vzfmr -o jsonpath={.data.token} | base64 --decode
+### Install prometheus
+#### kubectl apply -f prometheus/
