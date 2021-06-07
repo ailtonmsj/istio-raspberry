@@ -5,6 +5,22 @@ metadata:
   namespace: istio-system
 spec:
   hub: docker.io/querycapistio
+
+  # ingressControllerMode: STRICT
+  # enableAutoMtls: true
+
+  meshConfig:
+    # CONTROLE DA SAIDA PELO EGRESS
+    outboundTrafficPolicy:
+      # BLOCK
+      mode: REGISTRY_ONLY
+      # ALLOW
+      #mode: ALLOW_ANY
+
+    # ACCESS LOG OPTION
+    accessLogFile: /dev/stdout
+    accessLogEncoding: JSON
+
   components:
     pilot:
       k8s:
