@@ -46,6 +46,32 @@ data:
       static_configs:
       - targets:
         - localhost:9090
+    # istio custom configuration begin
+    # To scrape Istiod stats, the following example job can be added to scrape its http-monitoring port
+    - job_name: 'istiod'
+      kubernetes_sd_configs:
+      - role: endpoints
+        namespaces:
+          names:
+          - istio-system
+      relabel_configs:
+      - source_labels: [__meta_kubernetes_service_name, __meta_kubernetes_endpoint_port_name]
+        action: keep
+        regex: istiod;http-monitoring
+
+    # To scrape Envoy stats, including sidecar proxies and gateway proxies, the following job can be added to scrape ports 
+    # that end with -envoy-prom
+    - job_name: 'envoy-stats'
+      metrics_path: /stats/prometheus
+      kubernetes_sd_configs:
+      - role: pod
+
+      relabel_configs:
+      - source_labels: [__meta_kubernetes_pod_container_port_name]
+        action: keep
+        regex: '.*-envoy-prom'
+    # istio custom configuration end
+
     - bearer_token_file: /var/run/secrets/kubernetes.io/serviceaccount/token
       job_name: kubernetes-apiservers
       kubernetes_sd_configs:

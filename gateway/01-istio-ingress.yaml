@@ -18,6 +18,11 @@ spec:
       port:
         name: http
         number: 443
-        protocol: HTTP
+        protocol: HTTPS
+# FROM TLS BE ENABLE
+#      tls:
+#        mode: SIMPLE # enables HTTPS on this port
+#        serverCertificate: /etc/certs/servercert.pem
+#        privateKey: /etc/certs/privatekey.pem
   selector:
     istio: ingressgateway
