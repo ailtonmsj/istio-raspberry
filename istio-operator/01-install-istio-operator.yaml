@@ -46,6 +46,9 @@ spec:
       name: istio-ingressgateway
       enabled: true
       k8s:
+        # Service Configuration
+        service:
+          type: NodePort # default is LoadBalancer
         affinity:
           nodeAffinity:
             preferredDuringSchedulingIgnoredDuringExecution:
