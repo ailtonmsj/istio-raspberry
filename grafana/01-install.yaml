@@ -83,7 +83,7 @@ metadata:
 spec:
   type: ClusterIP
   ports:
-    - name: service
+    - name: http-service
       port: 3000
       protocol: TCP
       targetPort: 3000
@@ -152,7 +152,7 @@ spec:
               mountPath: "/etc/grafana/provisioning/dashboards/dashboardproviders.yaml"
               subPath: dashboardproviders.yaml
           ports:
-            - name: service
+            - name: http-service
               containerPort: 3000
               protocol: TCP
             - name: grafana

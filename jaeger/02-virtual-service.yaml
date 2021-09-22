@@ -1,16 +1,16 @@
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
 metadata:
-  name: grafana-vs
+  name: jaeger-vs
   namespace: istio-system
 spec:
   gateways:
-  - istio-gateway
+  - jaeger-gateway
   hosts:
-  - grafana.teste.com.br
+  - jaeger.teste.com.br
   http:
   - route:
     - destination:
-        host: grafana.istio-system.svc.cluster.local
+        host: tracing.istio-system.svc.cluster.local
         port:
-          number: 3000
+          number: 80

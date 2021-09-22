@@ -1,0 +1,19 @@
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: kiali-readonly-gateway
+  namespace: istio-system
+spec:
+  servers:
+    - hosts:
+        - kiali-readonly.teste.com.br
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+      # FROM TLS BE ENABLE
+#      tls:
+#        mode: SIMPLE # enables HTTPS on this port
+#        credentialName: ingress-cert-testecombr
+  selector:
+    istio: ingressgateway

@@ -1,16 +1,16 @@
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
 metadata:
-  name: jaeger-vs
+  name: kiali-readonly-vs
   namespace: istio-system
 spec:
   gateways:
-  - istio-gateway
+  - kiali-readonly-gateway
   hosts:
-  - jaeger.teste.com.br
+  - kiali-readonly.teste.com.br
   http:
   - route:
     - destination:
-        host: tracing.istio-system.svc.cluster.local
+        host: kiali-readonly.istio-system.svc.cluster.local
         port:
-          number: 80
+          number: 20001

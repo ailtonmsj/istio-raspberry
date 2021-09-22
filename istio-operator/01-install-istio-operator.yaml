@@ -6,8 +6,8 @@ metadata:
 spec:
   hub: docker.io/querycapistio
 
-  # ingressControllerMode: STRICT
-  # enableAutoMtls: true
+  ingressControllerMode: STRICT
+  enableAutoMtls: true
 
   meshConfig:
     # CONTROLE DA SAIDA PELO EGRESS

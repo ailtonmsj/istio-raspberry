@@ -415,7 +415,7 @@ subjects:
 apiVersion: v1
 kind: Service
 metadata:
-  name: kiali
+  name: kiali-readonly
   namespace: istio-system
   labels:
     helm.sh/chart: kiali-server-1.29.0

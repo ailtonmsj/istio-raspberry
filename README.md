@@ -6,7 +6,6 @@ istioctl operator init --hub=docker.io/querycapistio --tag=1.9.2
 ### Apply files in istio-operator folder
 ```bash
 kubectl apply -f istio-operator/
-kubectl apply -f gateway/
 ```
 
 ### Install kiali

@@ -1,16 +1,16 @@
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
 metadata:
-  name: prometheus-vs
+  name: kiali-vs
   namespace: istio-system
 spec:
   gateways:
-  - istio-gateway
+  - gateway-kiali
   hosts:
-  - prometheus.teste.com.br
+  - kiali.teste.com.br
   http:
   - route:
     - destination:
-        host: prometheus.istio-system.svc.cluster.local
+        host: kiali.istio-system.svc.cluster.local
         port:
-          number: 9090
+          number: 20001
