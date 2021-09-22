@@ -8,12 +8,12 @@ spec:
     - hosts:
         - kiali.teste.com.br
       port:
-        name: http
-        number: 80
-        protocol: HTTP
+        name: kiali-https-443
+        number: 443
+        protocol: HTTPS
       # FROM TLS BE ENABLE
-#      tls:
-#        mode: SIMPLE # enables HTTPS on this port
-#        credentialName: ingress-cert-testecombr
+      tls:
+        mode: SIMPLE # enables HTTPS on this port
+        credentialName: kiali-cert-ingress
   selector:
     istio: ingressgateway

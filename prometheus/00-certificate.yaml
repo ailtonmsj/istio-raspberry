@@ -1,0 +1,14 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: prometheus-cert-ingress
+  namespace: istio-system
+spec:
+  secretName: prometheus-cert-ingress
+  dnsNames:
+    - prometheus.teste.com.br
+  issuerRef:
+    name: selfsigned-issuer
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
