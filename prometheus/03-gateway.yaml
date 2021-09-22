@@ -5,6 +5,15 @@ metadata:
   namespace: istio-system
 spec:
   servers:
+#    - hosts:
+#        - prometheus.teste.com.br
+#      port:
+#        name: prometheus-http-80
+#        number: 80
+#        protocol: HTTP
+#      tls:
+#        httpsRedirect: true # sends 301 redirect for http requests to 443 port
+
     - hosts:
         - prometheus.teste.com.br
       port:
