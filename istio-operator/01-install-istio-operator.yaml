@@ -4,12 +4,12 @@ metadata:
   name: arm64-affinity-patch
   namespace: istio-system
 spec:
+  profile: default
   hub: docker.io/querycapistio
 
-  ingressControllerMode: STRICT
-  enableAutoMtls: true
-
   meshConfig:
+    ingressControllerMode: STRICT
+    enableAutoMtls: true
     # CONTROLE DA SAIDA PELO EGRESS
     outboundTrafficPolicy:
       # BLOCK

@@ -1,8 +1,10 @@
-### This instalation is for Kubernetes <=1.21, fdrom 1.22 the CustomResourceDefition api is not compatible with operator instalation (apiextensions.k8s.io/v1beta1)
+### This instalation is for Kubernetes >= 1.21, from 1.22 the CustomResourceDefition api is not compatible with operator instalation in version <= 1.13.0 (apiextensions.k8s.io/v1beta1)
 
 ### To install istio
+Install istioctl in version >= 1.13.0 (arm64 version)
+
 ```bash
-istioctl operator init --hub=docker.io/querycapistio --tag=1.9.2
+istioctl operator init --hub=docker.io/querycapistio --tag=1.13.0
 ```
 
 ### Apply files in istio-operator folder
