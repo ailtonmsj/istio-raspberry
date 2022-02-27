@@ -1,19 +1,19 @@
 kind: Gateway
 apiVersion: networking.istio.io/v1alpha3
 metadata:
-  name: gateway-kiali
+  name: jaeger-gateway
   namespace: istio-system
 spec:
   servers:
     - hosts:
-        - kiali.teste.com.br
+        - jaeger.teste.com.br
       port:
-        name: kiali-https-443
+        name: jaeger-https-443
         number: 443
         protocol: HTTPS
-      # TO ENABLE TLS
+      # FROM TLS BE ENABLE
       tls:
         mode: SIMPLE # enables HTTPS on this port
-        credentialName: kiali-cert-ingress
+        credentialName: jaeger-cert-ingress
   selector:
     istio: ingressgateway

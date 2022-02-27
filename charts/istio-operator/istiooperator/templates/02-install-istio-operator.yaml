@@ -1,0 +1,67 @@
+apiVersion: install.istio.io/v1alpha1
+kind: IstioOperator
+metadata:
+  namespace: istio-system
+  name: istiocontrolplane
+spec:
+  hub: docker.io/querycapistio
+
+  ingressControllerMode: STRICT
+  enableAutoMtls: true
+  #profile: /local/file/custom.install.yaml
+
+  meshConfig:
+    # CONTROLE DA SAIDA PELO EGRESS
+    outboundTrafficPolicy:
+      # BLOCK
+      mode: REGISTRY_ONLY
+      # ALLOW
+      #mode: ALLOW_ANY
+
+    # ACCESS LOG OPTION
+    accessLogFile: /dev/stdout
+    accessLogEncoding: JSON
+
+  components:
+    pilot:
+      k8s:
+        #replicaCount: 3
+        hpaSpec: 
+          minReplicas: 2
+          maxReplicas: 5
+#          metrics:
+#            object:
+#            pods:
+#            resource:
+        
+    ingressGateways:
+    - namespace: istio-system
+      name: istio-ingressgateway
+      enabled: true
+      k8s:
+        # Service Configuration
+        service:
+          type: NodePort # default is LoadBalancer
+        #replicaCount: 3
+        hpaSpec: 
+          minReplicas: 2
+          maxReplicas: 5
+#          metrics:
+#            object:
+#            pods:
+#            resource:
+        
+    egressGateways:
+    - namespace: istio-system
+      name: istio-egressgateway
+      enabled: true
+      k8s:
+        #replicaCount: 3
+        hpaSpec: 
+          minReplicas: 2
+          maxReplicas: 5
+#          metrics:
+#            object:
+#            pods:
+#            resource:
+        

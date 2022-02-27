@@ -1,0 +1,16 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: kiali-readonly-vs
+  namespace: istio-system
+spec:
+  gateways:
+  - kiali-readonly-gateway
+  hosts:
+  - kiali-readonly.teste.com.br
+  http:
+  - route:
+    - destination:
+        host: kiali-readonly.istio-system.svc.cluster.local
+        port:
+          number: 20001

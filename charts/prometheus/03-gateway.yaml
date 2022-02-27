@@ -1,0 +1,28 @@
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: prometheus-gateway
+  namespace: istio-system
+spec:
+  servers:
+#    - hosts:
+#        - prometheus.teste.com.br
+#      port:
+#        name: prometheus-http-80
+#        number: 80
+#        protocol: HTTP
+#      tls:
+#        httpsRedirect: true # sends 301 redirect for http requests to 443 port
+
+    - hosts:
+        - prometheus.teste.com.br
+      port:
+        name: prometheus-https-443
+        number: 443
+        protocol: HTTPS
+      # FROM TLS BE ENABLE
+      tls:
+        mode: SIMPLE # enables HTTPS on this port
+        credentialName: prometheus-cert-ingress
+  selector:
+    istio: ingressgateway
