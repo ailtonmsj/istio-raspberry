@@ -1,0 +1,1 @@
+### In the kiali-readonly folder relies a kiali with RBAC readonly access
