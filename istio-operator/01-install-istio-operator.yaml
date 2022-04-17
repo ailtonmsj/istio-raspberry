@@ -49,6 +49,30 @@ spec:
         # Service Configuration
         service:
           type: NodePort # default is LoadBalancer
+
+          # CUSTOM PORT 5000 - EXCLUSIVE FOR GRPC ( NECESSARY FOR NODE PORT )
+          ports:
+          - name: grpc
+            protocol: TCP
+            port: 5000
+            targetPort: 5000
+          
+          # DEFAULT PORTS - NECESSARY WHEN CUSTOM PORTS ARE ADDED
+          - name: https
+            protocol: TCP
+            port: 443
+            targetPort: 8443
+
+          - name: http
+            protocol: TCP
+            port: 80
+            targetPort: 8080
+
+          - name: healthcheck
+            protocol: TCP
+            port: 15021
+            targetPort: 15021
+
         affinity:
           nodeAffinity:
             preferredDuringSchedulingIgnoredDuringExecution:
